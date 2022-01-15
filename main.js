@@ -108,8 +108,6 @@ function getHeight () {
   return height
 }
 
-const height = getHeight()
-
 function getWidth () {
   let width = Number(prompt('What width would you like your field to be? '))
   if ((width < 1) || (width > 100) || (isNaN(width))) {
@@ -118,8 +116,6 @@ function getWidth () {
   }
   return width
 }
-
-const width = getWidth()
 
 function getDensity () {
   let density = Number(prompt('How dense would you like your field to be with holes? '))
@@ -130,6 +126,13 @@ function getDensity () {
   return density
 }
 
+console.log('Welcome to "Find the Hat"')
+console.log('You start in the top-left-hand corner of the field, and must find your hat')
+console.log('move around the field using "u" (up), "r" (right), "d" (down) and "l" (left)')
+console.log('and make sure that you do not fall down any of the holes')
+
+const height = getHeight()
+const width = getWidth()
 const density = getDensity()
 
 const gameField = Field.generateField(height, width, density)
