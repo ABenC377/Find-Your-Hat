@@ -112,8 +112,8 @@ const height = getHeight()
 
 function getWidth () {
   let width = Number(prompt('What width would you like your field to be? '))
-  if ((width < 1) || (width > 50) || (isNaN(width))) {
-    console.log('Width must be a number between 1 and 50')
+  if ((width < 1) || (width > 100) || (isNaN(width))) {
+    console.log('Width must be a number between 1 and 100')
     width = getWidth()
   }
   return width
