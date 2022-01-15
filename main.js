@@ -70,4 +70,41 @@ class Field {
       this.print()
     }
   }
+
+  static generateField (height, width, density) {
+    if ((height < 1) || (height > 50) || (typeof (height) !== 'number')) {
+      console.log('height must be a number between 1 and 50')
+      return Field.generateField()
+    }
+    if ((width < 1) || (width > 50) || (typeof (width) !== 'number')) {
+      console.log('width must be a number between 1 and 50')
+      return Field.generateField()
+    }
+    if ((density < 0) || (density > 1) || (typeof (density) !== 'number')) {
+      console.log('density must be a value between 0 and 1')
+      return Field.generateField()
+    }
+    const newField = []
+    let hatCounter = Math.floor((Math.random() * ((height * width) - 1)) + 1)
+    for (let i = 0; i < height; i++) {
+      const newRow = []
+      for (let j = 0; j < width; j++) {
+        if ((i === 0) && (j === 0)) {
+          newRow.append(fieldCharacter)
+        } else if (hatCounter === 0) {
+          newRow.append(hat)
+        } else {
+          const randomHoleGenerator = Math.Random()
+          if (randomHoleGenerator > density) {
+            newRow.append(fieldCharacter)
+          } else {
+            newRow.append(hole)
+          }
+        }
+        hatCounter -= 1
+      }
+      newField.append(newRow)
+    }
+    return new Field(newField)
+  }
 }
