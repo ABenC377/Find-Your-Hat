@@ -9,7 +9,6 @@ class Field {
   constructor (field) {
     this._field = field
     this._playerLocation = [0, 0]
-    this._hatLocation = [0, 0]
   }
 
   print () {
@@ -23,7 +22,7 @@ class Field {
   }
 
   win () {
-    if (this._playerLocation === this._hatLocation) {
+    if (this._field[this._playerLocation[0]][this._playerLocation[1]] === hat) {
       return true
     } else {
       return false
@@ -56,7 +55,6 @@ class Field {
       return true
     }
     this._playerLocation = newPlayerLocation
-    this._field[this._playerLocation[0]][this._playerLocation[1]] = pathCharacter
     if (this.lose()) {
       console.log('You Lose')
       return false
@@ -64,6 +62,7 @@ class Field {
       console.log('You Win!!!')
       return false
     }
+    this._field[this._playerLocation[0]][this._playerLocation[1]] = pathCharacter
     return true
   }
 
@@ -84,7 +83,6 @@ class Field {
           newRow.push(pathCharacter)
         } else if (hatCounter === 0) {
           newRow.push(hat)
-          this._hatLocation = [i, j]
         } else {
           const randomHoleGenerator = Math.random()
           if (randomHoleGenerator > density) {
