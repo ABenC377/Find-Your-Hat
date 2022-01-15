@@ -51,17 +51,23 @@ class Field {
       newPlayerLocation = [this._playerLocation[0], this._playerLocation[1] - 1]
     } else {
       console.log('please provide a valid direction (e.g., "u", "r", "d" or "l")')
-      return false
+      return true
     }
     this._field[this._playerLocation[0]][this._playerLocation[1]] = pathCharacter
     this._playerLocation = newPlayerLocation
     if (this.lose()) {
       console.log('You Lose')
-      return true
+      return false
     } else if (this.win()) {
       console.log('You Win!!!')
-      return true
+      return false
     }
-    return false
+    return true
+  }
+
+  playGame () {
+    while (this.getDirection()) {
+      this.print()
+    }
   }
 }
