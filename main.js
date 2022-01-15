@@ -21,7 +21,7 @@ class Field {
   }
 
   win () {
-    if (this._field[this._playerLocation[0]][this._playerlocation[1]] === hat) {
+    if (this._field[this._playerLocation[0]][this._playerLocation[1]] === hat) {
       return true
     } else {
       return false
@@ -36,5 +36,32 @@ class Field {
     } else {
       return false
     }
+  }
+
+  getDirection () {
+    const direction = prompt('Which way? ')
+    let newPlayerLocation = this._playerLocation
+    if (direction === 'u') {
+      newPlayerLocation = [this._playerLocation[0] - 1, this._playerLocation[1]]
+    } else if (direction === 'r') {
+      newPlayerLocation = [this._playerLocation[0], this._playerLocation[1] + 1]
+    } else if (direction === 'd') {
+      newPlayerLocation = [this._playerLocation[0] + 1, this._playerLocation[1]]
+    } else if (direction === 'l') {
+      newPlayerLocation = [this._playerLocation[0], this._playerLocation[1] - 1]
+    } else {
+      console.log('please provide a valid direction (e.g., "u", "r", "d" or "l")')
+      return false
+    }
+    this._field[this._playerLocation[0]][this._playerLocation[1]] = pathCharacter
+    this._playerLocation = newPlayerLocation
+    if (this.lose()) {
+      console.log('You Lose')
+      return true
+    } else if (this.win()) {
+      console.log('You Win!!!')
+      return true
+    }
+    return false
   }
 }
