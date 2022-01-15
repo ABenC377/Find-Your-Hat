@@ -30,9 +30,9 @@ class Field {
   }
 
   lose () {
-    if (this._field[this._playerLocation[0]][this._playerLocation[1]] === hole) {
+    if ((this._playerLocation[0] < 0) || (this._playerLocation[0] >= this._field.length) || (this._playerLocation[1] < 0) || (this._playerLocation[1] >= this._field[0].length)) {
       return true
-    } else if ((this._playerLocation[0] < 0) || (this._playerLocation[0] >= this._field.length) || (this._playerLocation[1] < 0) || (this._playerLocation[1] >= this._field[0].length)) {
+    } else if (this._field[this._playerLocation[0]][this._playerLocation[1]] === hole) {
       return true
     } else {
       return false
